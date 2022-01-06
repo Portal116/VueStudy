@@ -1,38 +1,36 @@
 <template>
-<<<<<<< HEAD
-<!-- 판매자 정보 및 인기 상품 -->
+    <!-- 판매자 정보 및 인기 상품 -->
     <div class="shop-info">
         <div class="shop-infoBox">
             <div class="shop-title"><h2>신세계몰</h2></div>
-=======
-<div class="shop-info">
-    <div class="shop-infoBox">
-        <div class="shop-title">
-            <h2>신세계몰</h2>
->>>>>>> 39a817dd7eca8a5fd52f5d800576e420b1c9a044
         </div>
-    </div>
-    <div class="shop-bestItem">
-        <div class="bestItemMore">
-            <span style="margin-right: 10px">이 판매자의 인기상품이에요</span>
-            <button class="showMore">더 보기</button>
-        </div>
-        <div class="bestPicDiv">
-            <div class="bestPic" v-for="(best, idx) in bests" :key="idx">
-                <img :src="
+        <div class="shop-bestItem">
+            <div class="bestItemMore">
+                <span style="margin-right: 10px"
+                    >이 판매자의 인기상품이에요</span
+                >
+                <button class="showMore">더 보기</button>
+            </div>
+            <div class="bestPicDiv">
+                <div class="bestPic" v-for="(best, idx) in bests" :key="idx">
+                    <img
+                        :src="
                             require(`@/components/productDetail/image/${best.image}`)
-                        " style="width: 140px; height: 140px" />
+                        "
+                        style="width: 140px; height: 140px"
+                    />
+                </div>
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
 export default {
     data() {
         return {
-            bests: [{
+            bests: [
+                {
                     image: "best01.jpg",
                 },
                 {
