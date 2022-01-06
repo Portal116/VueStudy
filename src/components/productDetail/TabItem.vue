@@ -1,4 +1,5 @@
 <template>
+<!-- 탭 버튼을 위해 차용 -->
     <button
         @click="$emit('input', id)"
         :class="[active, 'tab']"

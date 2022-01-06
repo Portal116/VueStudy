@@ -274,6 +274,7 @@ export default {
         };
     },
     methods: {
+        // 포인트 입력(변경 가능)
         applyPoint() {
             let pt = document.getElementById("pointInput").value;
             if (pt === "") {
@@ -288,12 +289,14 @@ export default {
                 this.finalPrice = this.totalPrice - this.sale + this.delivery;
             }
         },
+        // 쿠폰 입력
         applyCoupon() {
             this.sale -= parseInt(this.coupon);
             this.coupon = this.totalPrice * 0.1;
             this.sale += parseInt(this.coupon);
             this.finalPrice = this.totalPrice - this.sale + this.delivery;
         },
+        // 전화번호 체크
         phoneCheck() {
             let mobile = document.getElementById("mobile").value;
             if (
@@ -306,6 +309,7 @@ export default {
                 this.phoneValidate = false;
             }
         },
+        // 주소
         execDaumPostcode() {
             new window.daum.Postcode({
                 oncomplete: (data) => {
@@ -356,7 +360,9 @@ export default {
             var regexp = /\B(?=(\d{3})+(?!\d))/g;
             return num.toString().replace(regexp, ",");
         },
+        // 유효성 검사
         payCheck() {
+            // 배송부분
             const checked = document.getElementsByClassName("inputValues");
             for (var i = 0; i < checked.length; i++) {
                 if (checked[i].value.length == 0) {
@@ -366,6 +372,7 @@ export default {
                 }
             }
 
+            // 결제수단 부분
             const radioCheck = document.querySelector(
                 'input[name = "payMethodRadio"]:checked'
             );
@@ -375,6 +382,7 @@ export default {
                 return;
             }
 
+            // 전화번호 정규식 검사
             if (!this.phoneValidate) {
                 alert("전화번호를 확인하세요");
                 return;

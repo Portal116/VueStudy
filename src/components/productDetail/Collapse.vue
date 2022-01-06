@@ -1,60 +1,5 @@
-<style>
-.collapse {
-    margin-bottom: 2px;
-}
-.collapse .collapse-header {
-    background: #f7f7f7;
-    border-radius: 3px;
-    position: relative;
-}
-.collapse .collapse-header > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.collapse .collapse-header h3 {
-    font-size: 0.938em;
-    font-weight: bold;
-}
-.collapse .collapse-header::before {
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
-    content: url("./arrow-down.svg");
-    position: absolute;
-    font-size: 0.4em;
-    top: calc(50% - 1em);
-    left: 10px;
-    color: #c5c9d0;
-    -moz-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-}
-.collapse.is-active .collapse-header::before {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-.collapse .collapse-content-box {
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
-    padding: 30px 40px;
-    border-left: 2px solid #f7f7f7;
-    border-bottom: 2px solid #f7f7f7;
-    border-right: 2px solid #f7f7f7;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-</style>
-
 <template>
+    <!-- 클릭 시 드롭다운을 위해 차용 -->
     <div class="collapse collapse-item" :class="{ 'is-active': active }">
         <div
             class="collapse-header touchable"
@@ -111,3 +56,58 @@ export default {
     },
 };
 </script>
+<style>
+.collapse {
+    margin-bottom: 2px;
+}
+.collapse .collapse-header {
+    background: #f7f7f7;
+    border-radius: 3px;
+    position: relative;
+}
+.collapse .collapse-header > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.collapse .collapse-header h3 {
+    font-size: 0.938em;
+    font-weight: bold;
+}
+.collapse .collapse-header::before {
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    content: url("./arrow-down.svg");
+    position: absolute;
+    font-size: 0.4em;
+    top: calc(50% - 1em);
+    left: 10px;
+    color: #c5c9d0;
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.collapse.is-active .collapse-header::before {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.collapse .collapse-content-box {
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    padding: 30px 40px;
+    border-left: 2px solid #f7f7f7;
+    border-bottom: 2px solid #f7f7f7;
+    border-right: 2px solid #f7f7f7;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+</style>

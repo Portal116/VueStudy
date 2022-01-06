@@ -1,4 +1,5 @@
 <template>
+<!-- 리뷰 -->
     <div class="review">
         <div class="reviewTitle">
             <h2>상품평</h2>

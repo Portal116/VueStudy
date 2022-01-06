@@ -1,4 +1,5 @@
 <template>
+<!-- 판매자 정보 및 인기 상품 -->
     <div class="shop-info">
         <div class="shop-infoBox">
             <div class="shop-title"><h2>신세계몰</h2></div>
