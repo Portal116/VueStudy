@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 <!-- 내용 -->
     <div>
         <!-- 탭을 이용함 -->
@@ -45,7 +46,31 @@
                 class="tabBottom"
             />
         </div>
+=======
+<div>
+    <div class="tabs">
+        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabTop" />
     </div>
+    <div class="contents">
+        <transition>
+            <section class="item" :key="currentId">
+                <div v-if="currentId === 1">
+                    <img :src="require(`@/components/productDetail/image/${current.content}`)" style="margin: 0 auto" />
+                </div>
+                <div v-else-if="currentId === 2">
+                    <review></review>
+                </div>
+                <div v-else-if="currentId === 3">
+                    <qna></qna>
+                </div>
+            </section>
+        </transition>
+>>>>>>> 39a817dd7eca8a5fd52f5d800576e420b1c9a044
+    </div>
+    <div class="tabs">
+        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentId" class="tabBottom" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -61,8 +86,7 @@ export default {
     data() {
         return {
             currentId: 1,
-            list: [
-                {
+            list: [{
                     id: 1,
                     label: "상품 상세 정보",
                     content: "productDetail01.jpg",

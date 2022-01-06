@@ -56,7 +56,7 @@
                             <button class="dateBtn">10월</button>
                         </div>
                         <div class="row2">
-                            <select name="" id="" @change="setStartYear">
+                            <select name="" id="" @change="setStartYears">
                                 <option v-for="n in years" :key="n" :value="n" :selected="n == getYear()">{{n}}</option>
                             </select>
                             <label for="">년</label>
@@ -105,7 +105,6 @@
                         <td style="width:100px">가격</td>
                         <td id="edge2" style="width:80px">배송비</td>
                     </tr>
-                    <!-- v-show="compareDate(item) && compareInform(item)" -->
                     <tr v-for="(item, idx) in users" :key="idx" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
@@ -136,7 +135,6 @@
                         <td style="width:100px">처리상태</td>
                         <td id="edge2" style="width:80px">결과</td>
                     </tr>
-                    <!-- v-show="compareDate(item) && compareInform(item)" -->
                     <tr v-for="(item, asd) in users2" :key="asd" v-show="compareDate(item) && compareInform(item) ">
                         <td style="height:30px;">{{item.orderDate}}</td>
                         <td style="height:30px;">
@@ -210,9 +208,6 @@ export default {
             return year;
         },
         // 2000-01-01
-        replaceAt(input, index, character) {
-            return input.substr(0, index) + character + input.substr(index + character.length);
-        },
         setStartDate(event) {
             if (event.target.value < 10)
                 this.startPoint.date = 0 + event.target.value;
@@ -244,8 +239,6 @@ export default {
             this.endPoint.year = event.target.value;
         },
         compareDate(target) {
-            // alert(`${this.selectTerm.year}-${this.selectTerm.month}-${this.selectTerm.date}`)
-            // alert(target.date)
             if (`${this.startPoint.year}-${this.startPoint.month}-${this.startPoint.orderDate}` <= target.orderDate)
                 if (target.orderDate <= `${this.endPoint.year}-${this.endPoint.month}-${this.endPoint.date}`)
                     return true;
@@ -257,7 +250,6 @@ export default {
             if (this.target == "")
                 return true;
             else {
-                // if (this.target == event.inform)
                 if (event.product.indexOf(this.target) !== -1)
                     return true;
                 else
