@@ -1,4 +1,5 @@
 <template>
+<!-- 결제페이지 -->
 <div class="payment">
     <div class="orderProduct">
         <h2>주문 상품 정보</h2>
@@ -31,10 +32,12 @@
             </tr>
         </table>
     </div>
+    <!-- 할인 -->
     <div class="coupon">
         <h2>할인/포인트</h2>
         <table class="couponTable">
             <tr>
+                <!-- 쿠폰 적용 -->
                 <td><span>쿠폰 할인</span></td>
                 <td class="couponNum">{{ AddComma(coupon) }}원</td>
                 <td>
@@ -63,6 +66,7 @@
             </tr>
         </table>
     </div>
+    <!-- 배송지 (전부 입력 필수)-->
     <div class="delivery">
         <h2 style="margin: 20px 0 0 -10px">배송지 입력</h2>
         <p>
@@ -104,10 +108,11 @@
             </span>
         </p>
     </div>
-
+    <!-- 결제수단 -->
     <div class="payMethod">
         <h2 style="margin: 20px 0 0 -10px">결제수단 선택</h2>
         <p>
+            <!-- 선택 필수 -->
             <input type="radio" value="credit" v-model="radioPay" name="payMethodRadio" id="payMethodRadio" style="width: auto" />신용카드
             <input type="radio" value="cash" v-model="radioPay" name="payMethodRadio" id="payMethodRadio" style="width: auto; margin-left: 30px" />무통장 입금
             <input type="radio" value="phone" v-model="radioPay" name="payMethodRadio" id="payMethodRadio" style="width: auto; margin-left: 30px" />휴대폰 결제
@@ -136,6 +141,7 @@
         </div>
         <div v-if="radioPay === 'phone'"></div>
     </div>
+    <!-- 최종 결제 정보 -->
     <div class="payInfo">
         <h2>최종 결제 정보</h2>
         <table class="payInfoTable">
@@ -185,9 +191,9 @@ export default {
             totalPrice: 0,
             coupon: 0,
             sale: 0,
-            finalPrice: 110500,
+            finalPrice: 0,
             radioPay: "",
-            delivery: 2500,
+            delivery: 0,
             phoneValidate: true,
             usable: 3548,
             open: false,
@@ -219,7 +225,7 @@ export default {
             this.sale += parseInt(this.coupon);
             this.finalPrice = this.totalPrice - this.sale + this.delivery;
         },
-        // 전화번호 체크
+        // 전화번호 체크(정규식)
         phoneCheck() {
             let mobile = document.getElementById("mobile").value;
             if (
@@ -294,7 +300,6 @@ export default {
                     return;
                 }
             }
-
             // 결제수단 부분
             const radioCheck = document.querySelector(
                 'input[name = "payMethodRadio"]:checked'
@@ -304,7 +309,6 @@ export default {
                 radioCheck.focus();
                 return;
             }
-
             // 전화번호 정규식 검사
             if (!this.phoneValidate) {
                 alert("전화번호를 확인하세요");
@@ -322,7 +326,10 @@ export default {
             for (let i = 0; i < this.getOrderList.length; i++) {
                 this.totalPrice += this.getOrderList[i].price;
                 this.sale += this.getOrderList[i].price * 0.1;
+                this.delivery += this.getOrderList[i].delivery_fee;
+              
             }
+            this.finalPrice = this.totalPrice - this.sale + this.delivery;
         }
     },
 };
